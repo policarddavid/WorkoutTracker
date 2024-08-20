@@ -4,7 +4,6 @@ import Message from "./components/Message";
 import "./App.css";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import ArnoldSplit from "./components/ArnoldSplit";
 import Workout from "./components/Workout";
 
 const workouts = [
