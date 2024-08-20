@@ -1,6 +1,6 @@
 import ListGroup from "./ListGroup";
-import Message from "./Message";
 import { Workout } from "./Workout";
+import "./Home.css";
 
 interface HomeProps {
   workoutList: Workout[];
@@ -14,14 +14,14 @@ function Home({ workoutList }: HomeProps) {
   workoutNames = workoutList.map((workout) => workout.name);
   workoutIds = workoutList.map((workout) => workout.id);
   return (
-    <div className="parent">
+    <div className="home">
       <ListGroup
         items={workoutNames}
         keys={workoutIds}
-        heading="What type of workout split are you interested in?"
+        heading="Try one of our popular workout plans"
         onSelectItem={handleSelectItem}
       />
-      <Message text={"Or create your own workout plan"}></Message>
+      <h2>Or create your own!</h2>
       <ListGroup
         items={["Custom workout plan"]}
         keys={["CustomWorkoutPlan"]}
