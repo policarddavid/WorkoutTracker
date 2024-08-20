@@ -1,19 +1,23 @@
-import ArnoldSplit from "./ArnoldSplit";
 import ListGroup from "./ListGroup";
 import Message from "./Message";
-import Workout from "./Workout";
+import { Workout } from "./Workout";
 
-function Home() {
+interface HomeProps {
+  workoutList: Workout[];
+}
+function Home({ workoutList }: HomeProps) {
   const handleSelectItem = (key: string) => {
     window.location.href = `/${key}`;
   };
-  const workouts: string[] = ["Arnold Split", "Push-Pull-Legs"];
-  const workoutids: string[] = ["ArnoldSplit", "PPL"];
+  let workoutNames: string[];
+  let workoutIds: string[];
+  workoutNames = workoutList.map((workout) => workout.name);
+  workoutIds = workoutList.map((workout) => workout.id);
   return (
     <div className="parent">
       <ListGroup
-        items={workouts}
-        keys={workoutids}
+        items={workoutNames}
+        keys={workoutIds}
         heading="What type of workout split are you interested in?"
         onSelectItem={handleSelectItem}
       />

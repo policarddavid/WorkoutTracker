@@ -1,12 +1,7 @@
 import ListGroup from "./ListGroup";
+import { Workout } from "./Workout";
 
-interface Props {
-  name: string;
-  id: string;
-  exercises: string[];
-}
-
-function Workout({ name, id, exercises }: Props) {
+function WorkoutGen({ name, id, exercises }: Workout) {
   return (
     <div>
       <ListGroup
@@ -19,4 +14,4 @@ function Workout({ name, id, exercises }: Props) {
   );
 }
 
-export default Workout;
+export default WorkoutGen;
