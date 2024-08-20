@@ -1,16 +1,16 @@
-import "./ListGroup.css";
 interface Props {
   items: string[];
-  heading: string;
-  onSelectItem: (item: string) => void;
+  keys: string[];
+  heading?: string;
+  onSelectItem: (key: string) => void;
 }
 import { useState } from "react";
-function ListGroup({ items, heading, onSelectItem }: Props) {
+function ListGroup({ items, keys, heading = "", onSelectItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   useState;
   return (
     <>
-      <h1>{heading}</h1>
+      {heading !== "" && <h1>{heading}</h1>}
       {items.length === 0 && <p>No items to display</p>}
       <ul className="list-group">
         {items.map((item, index) => (
@@ -20,13 +20,13 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            key={item}
+            key={keys[index]}
             onClick={() => {
               setSelectedIndex(index);
-              onSelectItem(item);
+              onSelectItem(keys[index]);
             }}
           >
-            {item}
+            <div style={{ textAlign: "center" }}>{item}</div>
           </li>
         ))}
       </ul>
