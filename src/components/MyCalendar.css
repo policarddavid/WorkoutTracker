@@ -1,9 +1,12 @@
 @import url('react-calendar/dist/Calendar.css');
 
-
 .react-calendar {
     margin: 0 auto;
     margin-top: 25vh;
     transform: scale(1.5);
 }
-
+.react-calendar .highlight{
+    background-color: #0bb830;
+    color: #ffffff;
+  }
+  
