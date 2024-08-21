@@ -12,7 +12,7 @@ const WeekView: React.FC<Props> = ({ workout }: Props) => {
     <div style={{ textAlign: "center" }}>
       <Table workout={workout} />
       <Button
-        onClick={() => (window.location.href = `/MyCalendar`)}
+        onClick={() => (window.location.href = `/MyCalendar${workout.id}`)}
         color="dark"
       >
         View My Calendar

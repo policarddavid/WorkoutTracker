@@ -90,10 +90,12 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home workoutList={workouts} />} />
-        <Route
-          path="/MyCalendar"
-          element={<Calendar workout={workouts[0]} />}
-        />
+        {workouts.map((workout) => (
+          <Route
+            path={`/MyCalendar${workout.id}`}
+            element={<Calendar workout={workout} />}
+          />
+        ))}
         {workouts.map((workout) => (
           <Route
             path={`/${workout.id}`}
