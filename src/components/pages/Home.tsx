@@ -1,6 +1,6 @@
-import ListGroup from "./ListGroup";
-import { Workout } from "./Workout";
-import "./Home.css";
+import ListGroup from "../ListGroup";
+import { Workout } from "../Workout";
+import "../Home.css";
 
 interface HomeProps {
   workoutList: Workout[];

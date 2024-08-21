@@ -1,11 +1,16 @@
 // src/pages/LoginPage.tsx
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { AuthContext } from "../../context/AuthContext";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const { setAuthTokens, setLoading, setUser } = useContext(AuthContext);
+  let navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,6 +21,11 @@ const LoginPage: React.FC = () => {
       })
       .then((response) => {
         console.log(response.data);
+        setAuthTokens(response.data);
+        localStorage.setItem("authTokens", JSON.stringify(response.data));
+        setUser(jwtDecode(response.data.access));
+        setLoading(true);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);

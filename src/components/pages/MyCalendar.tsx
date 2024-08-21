@@ -2,9 +2,21 @@
 import { addDays, differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import "./MyCalendar.css";
-import { Workout } from "./Workout";
-import { useRef, useState } from "react";
+import "../MyCalendar.css";
+import { Workout } from "../Workout";
+import { useRef, useState, useContext, useEffect } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
+
+interface userinfoInterface {
+  id: number;
+  first_name: string;
+  username: string;
+  email: string;
+}
+interface MyCalendarProps {
+  workout: Workout;
+}
 const week = [
   "Monday",
   "Tuesday",
@@ -14,12 +26,30 @@ const week = [
   "Saturday",
   "Sunday",
 ];
-interface MyCalendarProps {
-  workout: Workout;
-}
 let currentDay = 0;
 
 function MyCalendar({ workout }: MyCalendarProps) {
+  const [userInfos, setUserInfos] = useState<userinfoInterface>();
+  const { authTokens, setLoading } = useContext(AuthContext);
+  const { callLogout } = useContext(AuthContext);
+
+  useEffect(() => {
+    axios
+      .get<userinfoInterface>("http://127.0.0.1:8000/user/", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + String(authTokens.access),
+        },
+      })
+      .then((response) => {
+        setUserInfos(response.data);
+        setLoading(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [daySelected, setDay] = useState<number | 0>(0);
   const [dateSelected, setDate] = useState<Date>(new Date());
@@ -50,6 +80,13 @@ function MyCalendar({ workout }: MyCalendarProps) {
   }
   return (
     <div>
+      <p>
+        Name: <span>{userInfos?.first_name}</span>
+      </p>
+      <p>{/* Email: <span>{userInfos?.email}</span> */}</p>
+      <p>
+        Username: <span>{userInfos?.username}</span>
+      </p>
       {
         <Calendar
           onClickDay={handleCalendarClick}
@@ -80,6 +117,7 @@ function MyCalendar({ workout }: MyCalendarProps) {
           <button onClick={handleWorkoutComplete}>Workout Complete!</button>
         </dialog>
       }
+      <button onClick={callLogout}>Log out</button>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
-import Table from "./Table";
-import { Workout } from "./Workout";
-import Button from "./Button";
+import Table from "../Table";
+import { Workout } from "../Workout";
+import Button from "../Button";
 
 interface Props {
   workout: Workout;

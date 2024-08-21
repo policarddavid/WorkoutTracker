@@ -1,12 +1,14 @@
 import "./App.css";
-import Home from "./components/Home";
+import Home from "./components/pages/Home";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Workout } from "./components/Workout";
-import WeekView from "./components/WeekView";
-import Calendar from "./components/MyCalendar";
+import WeekView from "./components/pages/WeekView";
+import Calendar from "./components/pages/MyCalendar";
 import { Exercise } from "./components/Workout";
-import LoginPage from "./components/LoginPage";
-import SignupPage from "./components/SignupPage";
+import LoginPage from "./components/pages/LoginPage";
+import SignupPage from "./components/pages/SignupPage";
+import AuthProvider from "./context/AuthContext";
+import RequireAuth from "./utils/RequireAuth";
 const workouts: Workout[] = [
   {
     name: "Arnold Split",
@@ -90,25 +92,29 @@ const workouts: Workout[] = [
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/" element={<Home workoutList={workouts} />} />
-        {workouts.map((workout) => (
-          <Route
-            path={`/MyCalendar${workout.id}`}
-            element={<Calendar workout={workout} />}
-          />
-        ))}
-        {workouts.map((workout) => (
-          <Route
-            path={`/${workout.id}`}
-            element={<WeekView workout={workout} />}
-          />
-        ))}
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/" element={<Home workoutList={workouts} />} />
+          <Route element={<RequireAuth />}>
+            {workouts.map((workout) => (
+              <Route
+                path={`/MyCalendar${workout.id}`}
+                element={<Calendar workout={workout} />}
+              />
+            ))}
+          </Route>
+          {workouts.map((workout) => (
+            <Route
+              path={`/${workout.id}`}
+              element={<WeekView workout={workout} />}
+            />
+          ))}
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
