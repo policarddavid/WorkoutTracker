@@ -2,7 +2,8 @@ import "./App.css";
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Workout } from "./components/Workout";
-import Table from "./components/Table";
+import WeekView from "./components/WeekView";
+import Calendar from "./components/MyCalendar";
 const workouts: Workout[] = [
   {
     name: "Arnold Split",
@@ -89,10 +90,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home workoutList={workouts} />} />
+        <Route path="/MyCalendar" element={<Calendar />} />
         {workouts.map((workout) => (
           <Route
             path={`/${workout.id}`}
-            element={<Table workout={workout} />}
+            element={<WeekView workout={workout} />}
           />
         ))}
       </Routes>

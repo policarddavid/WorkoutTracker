@@ -1,0 +1,9 @@
+@import url('react-calendar/dist/Calendar.css');
+
+
+.react-calendar {
+    margin: 0 auto;
+    margin-top: 25vh;
+    transform: scale(1.5);
+}
+
