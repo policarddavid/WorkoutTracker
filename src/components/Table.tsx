@@ -24,7 +24,7 @@ const Table: React.FC<TableProps> = ({ workout }: TableProps) => {
               {workout.days.map((day, columnIndex) => (
                 <td key={columnIndex}>
                   {day.exercises.map((exercise, index) => (
-                    <div>{exercise.name}</div>
+                    <div>{exercise.printExerciseDetails()}</div>
                   ))}
                 </td>
               ))}
