@@ -1,5 +1,5 @@
 "use client";
-import { addDays, differenceInCalendarDays } from "date-fns";
+import { differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./MyCalendar.css";
@@ -14,12 +14,10 @@ const week = [
   "Saturday",
   "Sunday",
 ];
-interface MyCalendarProps {
-  workout: Workout;
-}
 let currentDay = 0;
 
-function MyCalendar({ workout }: MyCalendarProps) {
+function MyCalendar() {
+  let storedWorkout: Workout = JSON.parse(localStorage.getItem("myWorkout")!);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [daySelected, setDay] = useState<number | 0>(0);
   const [dateSelected, setDate] = useState<Date>(new Date());
@@ -46,7 +44,6 @@ function MyCalendar({ workout }: MyCalendarProps) {
     dialogRef.current?.close();
     const updatedDates = [...dates, dateSelected];
     setDates(updatedDates);
-    console.log(dates);
   }
   return (
     <div>
@@ -61,15 +58,15 @@ function MyCalendar({ workout }: MyCalendarProps) {
           <table className="table">
             <thead>
               <tr>
-                <th>{workout.name}</th>
+                <th>{storedWorkout?.name}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  {workout.days[daySelected].exercises.map(
+                  {storedWorkout?.days[daySelected].exercises.map(
                     (exercise, index) => (
-                      <div key={index}>{exercise.printExerciseDetails()}</div>
+                      <div key={index}>{exercise.name}</div>
                     )
                   )}
                 </td>

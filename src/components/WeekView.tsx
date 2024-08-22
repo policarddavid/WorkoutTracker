@@ -8,11 +8,12 @@ interface Props {
 }
 
 const WeekView: React.FC<Props> = ({ workout }: Props) => {
+  localStorage.setItem(`myWorkout`, JSON.stringify(workout));
   return (
     <div style={{ textAlign: "center" }}>
       <Table workout={workout} />
       <Button
-        onClick={() => (window.location.href = `/MyCalendar${workout.id}`)}
+        onClick={() => (window.location.href = `/MyCalendar`)}
         color="dark"
       >
         View My Calendar

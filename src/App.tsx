@@ -95,12 +95,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/" element={<Home workoutList={workouts} />} />
-        {workouts.map((workout) => (
-          <Route
-            path={`/MyCalendar${workout.id}`}
-            element={<Calendar workout={workout} />}
-          />
-        ))}
+        <Route path={`/MyCalendar`} element={<Calendar />} />
         {workouts.map((workout) => (
           <Route
             path={`/${workout.id}`}

@@ -1,14 +1,23 @@
 import ListGroup from "./ListGroup";
 import { Workout } from "./Workout";
 import "./Home.css";
+import { useState, useEffect } from "react";
+import { set } from "date-fns";
 
 interface HomeProps {
   workoutList: Workout[];
 }
 function Home({ workoutList }: HomeProps) {
+  const [data, setData] = useState<Workout>();
   const handleSelectItem = (key: string) => {
-    window.location.href = `/${key}`;
+    setData(workoutList.find((workout) => workout.id === key));
   };
+  useEffect(() => {
+    if (data) {
+      localStorage.setItem(`myWorkout`, JSON.stringify(data));
+      window.location.href = `/${data.id}`;
+    }
+  }, [data]);
   let workoutNames: string[];
   let workoutIds: string[];
   workoutNames = workoutList.map((workout) => workout.name);
