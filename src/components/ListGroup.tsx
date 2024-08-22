@@ -1,13 +1,15 @@
+import React, { useState } from "react";
+
 interface Props {
   items: string[];
   keys: string[];
   heading?: string;
   onSelectItem: (key: string) => void;
 }
-import { useState } from "react";
+
 function ListGroup({ items, keys, heading = "", onSelectItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  useState;
+
   return (
     <>
       {heading !== "" && <h1>{heading}</h1>}
@@ -26,11 +28,14 @@ function ListGroup({ items, keys, heading = "", onSelectItem }: Props) {
               onSelectItem(keys[index]);
             }}
           >
-            <div style={{ textAlign: "center" }}>{item}</div>
+            <div style={{ textAlign: "center" }} className="no-select">
+              {item}
+            </div>
           </li>
         ))}
       </ul>
     </>
   );
 }
+
 export default ListGroup;
