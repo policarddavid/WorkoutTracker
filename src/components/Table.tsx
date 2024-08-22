@@ -6,7 +6,6 @@ import Button from "./Button";
 import { useRef, useState } from "react";
 
 const Table: React.FC = () => {
-  const { reset } = useForm();
   const [workout, setWorkout] = useState<Workout>(
     JSON.parse(localStorage.getItem("myWorkout")!)
   );
@@ -15,6 +14,10 @@ const Table: React.FC = () => {
   const handleEdit = (key: number) => {
     setDay(key);
     dialogRef.current?.showModal();
+  };
+  const handleExit = () => {
+    (document.getElementById("editor") as HTMLFormElement)?.reset();
+    dialogRef.current?.close();
   };
   const saveChanges = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -32,6 +35,7 @@ const Table: React.FC = () => {
     localStorage.setItem(`myWorkout`, JSON.stringify(updatedWorkout));
     setWorkout(JSON.parse(localStorage.getItem("myWorkout")!));
     console.log("changes saved");
+    (document.getElementById("editor") as HTMLFormElement)?.reset();
   };
   return (
     <div className="table-responsive">
@@ -66,7 +70,7 @@ const Table: React.FC = () => {
         </tbody>
       </table>
       <dialog ref={dialogRef}>
-        <form onSubmit={saveChanges}>
+        <form onSubmit={saveChanges} id="editor">
           <table className="table">
             <thead>
               <tr>
@@ -94,7 +98,7 @@ const Table: React.FC = () => {
           <button
             type="button"
             onClick={() => {
-              dialogRef.current?.close();
+              handleExit();
             }}
           >
             Exit
