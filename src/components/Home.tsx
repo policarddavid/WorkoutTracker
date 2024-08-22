@@ -2,7 +2,6 @@ import ListGroup from "./ListGroup";
 import { Workout } from "./Workout";
 import "./Home.css";
 import { useState, useEffect } from "react";
-import { set } from "date-fns";
 
 interface HomeProps {
   workoutList: Workout[];
@@ -15,7 +14,7 @@ function Home({ workoutList }: HomeProps) {
   useEffect(() => {
     if (data) {
       localStorage.setItem(`myWorkout`, JSON.stringify(data));
-      window.location.href = `/${data.id}`;
+      window.location.href = `/WeekView`;
     }
   }, [data]);
   let workoutNames: string[];

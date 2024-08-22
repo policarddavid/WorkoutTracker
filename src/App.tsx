@@ -92,16 +92,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        {/* <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} /> */}
         <Route path="/" element={<Home workoutList={workouts} />} />
         <Route path={`/MyCalendar`} element={<Calendar />} />
-        {workouts.map((workout) => (
-          <Route
-            path={`/${workout.id}`}
-            element={<WeekView workout={workout} />}
-          />
-        ))}
+        <Route path={`/WeekView`} element={<WeekView />} />
       </Routes>
     </Router>
   );

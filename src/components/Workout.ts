@@ -13,15 +13,13 @@ export interface Day {
     sets: number;
     reps: number;
     weight: number;
+    details: string;
   
     constructor(name: string, sets: number, reps: number, weight: number) {
       this.name = name;
       this.sets = sets;
       this.reps = reps;
       this.weight = weight;
+      this.details = `${this.name} ${this.sets}x${this.reps} ${this.weight}lbs`;
+      }
     }
-  
-    printExerciseDetails(): string {
-      return `${this.name} ${this.sets}x${this.reps} ${this.weight}lbs`;
-    }
-  }

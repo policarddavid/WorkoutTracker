@@ -66,7 +66,7 @@ function MyCalendar() {
                 <td>
                   {storedWorkout?.days[daySelected].exercises.map(
                     (exercise, index) => (
-                      <div key={index}>{exercise.name}</div>
+                      <div key={index}>{exercise.details}</div>
                     )
                   )}
                 </td>

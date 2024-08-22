@@ -3,15 +3,11 @@ import Table from "./Table";
 import { Workout } from "./Workout";
 import Button from "./Button";
 
-interface Props {
-  workout: Workout;
-}
-
-const WeekView: React.FC<Props> = ({ workout }: Props) => {
-  localStorage.setItem(`myWorkout`, JSON.stringify(workout));
+const WeekView: React.FC = () => {
+  let workout: Workout = JSON.parse(localStorage.getItem("myWorkout")!);
   return (
     <div style={{ textAlign: "center" }}>
-      <Table workout={workout} />
+      <Table />
       <Button
         onClick={() => (window.location.href = `/MyCalendar`)}
         color="dark"
