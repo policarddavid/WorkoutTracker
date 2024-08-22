@@ -9,10 +9,10 @@ export interface Day {
     exercises: Exercise[];
   }
   export class Exercise {
-    name: string;
-    sets: number;
-    reps: number;
-    weight: number;
+    name?: string;
+    sets?: number;
+    reps?: number;
+    weight?: number;
     details: string;
   
     constructor(name: string, sets: number, reps: number, weight: number) {

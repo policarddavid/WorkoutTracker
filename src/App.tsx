@@ -87,6 +87,68 @@ const workouts: Workout[] = [
     ],
   },
 ];
+const customWorkout: Workout = {
+  name: "Your custom workout",
+  id: "customWorkout",
+  days: [
+    {
+      name: "Monday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Tuesday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Wednesday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Thursday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Friday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Saturday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Sunday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+  ],
+};
 
 function App() {
   return (

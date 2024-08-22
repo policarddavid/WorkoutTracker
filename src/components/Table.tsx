@@ -1,12 +1,14 @@
 import React from "react";
 import { Workout } from "./Workout";
-import { useForm } from "react-hook-form";
 import "./Table.css";
 import Button from "./Button";
 import { useRef, useState } from "react";
 
 const Table: React.FC = () => {
   const [workout, setWorkout] = useState<Workout>(
+    JSON.parse(localStorage.getItem("myWorkout")!)
+  );
+  const [updatedWorkout, setUpdatedWorkout] = useState<Workout>(
     JSON.parse(localStorage.getItem("myWorkout")!)
   );
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -17,20 +19,39 @@ const Table: React.FC = () => {
   };
   const handleExit = () => {
     (document.getElementById("editor") as HTMLFormElement)?.reset();
+    setUpdatedWorkout(workout);
     dialogRef.current?.close();
+  };
+  const handleRemove = (key: number) => {
+    let removedExercise = updatedWorkout;
+    console.log("removing exercise");
+    console.log(removedExercise.days[daySelected].exercises[key]);
+    removedExercise.days[daySelected].exercises.splice(key, 1);
+    setUpdatedWorkout(removedExercise);
+    setWorkout(JSON.parse(localStorage.getItem("myWorkout")!));
+  };
+
+  const handleAdd = () => {
+    let addedExercise = updatedWorkout;
+    addedExercise.days[daySelected].exercises.push({ details: "" });
+    setUpdatedWorkout(addedExercise);
+    setWorkout(JSON.parse(localStorage.getItem("myWorkout")!));
   };
   const saveChanges = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    //handle editing values
     const updatedWorkout = workout;
     const formValues = Array.from(event.currentTarget.elements);
     const inputValues = formValues
       .filter((element) => element instanceof HTMLInputElement)
       .map((input) => input.value);
-    console.log(inputValues);
-    inputValues.map(
-      (value, index) =>
-        (updatedWorkout.days[daySelected].exercises[index].details = value)
-    );
+    //delete all the exercies in the day
+    updatedWorkout.days[daySelected].exercises = [];
+    //for each value in inputValues, add a new exercise to the day
+    inputValues.forEach((value) => {
+      updatedWorkout.days[daySelected].exercises.push({ details: value });
+    });
+
     dialogRef.current?.close();
     localStorage.setItem(`myWorkout`, JSON.stringify(updatedWorkout));
     setWorkout(JSON.parse(localStorage.getItem("myWorkout")!));
@@ -74,26 +95,35 @@ const Table: React.FC = () => {
           <table className="table">
             <thead>
               <tr>
-                <th>{workout.days[daySelected]?.name}</th>
+                <th>{updatedWorkout.days[daySelected]?.name}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  {workout?.days[daySelected].exercises.map(
+                  {updatedWorkout?.days[daySelected].exercises.map(
                     (exercise, index) => (
                       <div key={index}>
                         <input
                           name={index.toString()}
                           type="text"
-                          placeholder={exercise.details}
+                          defaultValue={exercise.details}
                         />
+                        <button
+                          type="button"
+                          onClick={() => handleRemove(index)}
+                        >
+                          remove
+                        </button>
                       </div>
                     )
                   )}
                 </td>
               </tr>
             </tbody>
+            <button type="button" onClick={handleAdd}>
+              add
+            </button>
           </table>
           <button
             type="button"
