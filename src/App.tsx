@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Workout } from "./components/Workout";
 import WeekView from "./components/WeekView";
 import Calendar from "./components/MyCalendar";
+import { Exercise } from "./components/Workout";
+import LoginPage from "./components/LoginPage";
+import SignupPage from "./components/SignupPage";
 const workouts: Workout[] = [
   {
     name: "Arnold Split",
@@ -12,33 +15,33 @@ const workouts: Workout[] = [
       {
         name: "Monday",
         exercises: [
-          { name: "Push-ups", sets: 3, reps: 10, weight: 0 },
-          { name: "box jumps", sets: 3, reps: 10, weight: 0 },
+          new Exercise("Push-ups", 3, 10, 0),
+          new Exercise("Box Jumps", 3, 10, 0),
         ],
       },
       {
         name: "Tuesday",
-        exercises: [{ name: "Squats", sets: 3, reps: 15, weight: 0 }],
+        exercises: [new Exercise("Squats", 3, 10, 0)],
       },
       {
         name: "Wednesday",
-        exercises: [{ name: "Pull-ups", sets: 3, reps: 8, weight: 0 }],
+        exercises: [new Exercise("Pull-ups", 3, 8, 0)],
       },
       {
         name: "Thursday",
-        exercises: [{ name: "Deadlifts", sets: 3, reps: 5, weight: 100 }],
+        exercises: [new Exercise("Deadlifts", 3, 5, 100)],
       },
       {
         name: "Friday",
-        exercises: [{ name: "Bench Press", sets: 3, reps: 10, weight: 50 }],
+        exercises: [new Exercise("Bench Press", 3, 10, 50)],
       },
       {
         name: "Saturday",
-        exercises: [{ name: "Lunges", sets: 3, reps: 12, weight: 0 }],
+        exercises: [new Exercise("Lunges", 3, 12, 0)],
       },
       {
         name: "Sunday",
-        exercises: [{ name: "Rest", sets: 0, reps: 0, weight: 0 }],
+        exercises: [new Exercise("Rest", 0, 0, 0)],
       },
     ],
   },
@@ -49,59 +52,113 @@ const workouts: Workout[] = [
       {
         name: "Monday",
         exercises: [
-          { name: "squats", sets: 3, reps: 10, weight: 0 },
-          { name: "hip thrusts", sets: 3, reps: 10, weight: 0 },
-          { name: "more squats idk", sets: 3, reps: 10, weight: 0 },
+          new Exercise("squats", 3, 10, 0),
+          new Exercise("hip thrusts", 3, 10, 0),
+          new Exercise("more squats idk", 3, 10, 0),
         ],
       },
       {
         name: "Tuesday",
         exercises: [
-          { name: "hip abductors", sets: 3, reps: 15, weight: 0 },
-          { name: "hip thrust", sets: 3, reps: 125, weight: 0 },
+          new Exercise("hip abductors", 3, 15, 0),
+          new Exercise("hip thrust", 3, 125, 0),
         ],
       },
       {
         name: "Wednesday",
-        exercises: [{ name: "Pull-ups", sets: 3, reps: 8, weight: 0 }],
+        exercises: [new Exercise("Pull-ups", 3, 8, 0)],
       },
       {
         name: "Thursday",
-        exercises: [{ name: "Deadlifts", sets: 3, reps: 5, weight: 100 }],
+        exercises: [new Exercise("Deadlifts", 3, 5, 100)],
       },
       {
         name: "Friday",
-        exercises: [{ name: "Bench Press", sets: 3, reps: 10, weight: 50 }],
+        exercises: [new Exercise("Bench Press", 3, 10, 50)],
       },
       {
         name: "Saturday",
-        exercises: [{ name: "Lunges", sets: 3, reps: 12, weight: 0 }],
+        exercises: [new Exercise("Lunges", 3, 12, 0)],
       },
       {
         name: "Sunday",
-        exercises: [{ name: "Rest", sets: 0, reps: 0, weight: 0 }],
+        exercises: [new Exercise("Rest", 0, 0, 0)],
       },
     ],
   },
 ];
+const customWorkout: Workout = {
+  name: "Your custom workout",
+  id: "customWorkout",
+  days: [
+    {
+      name: "Monday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Tuesday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Wednesday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Thursday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Friday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Saturday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+    {
+      name: "Sunday",
+      exercises: [
+        new Exercise("Exercise 1", 3, 10, 0),
+        new Exercise("Exercise 2", 3, 10, 0),
+        new Exercise("Exercise 3", 3, 10, 0),
+      ],
+    },
+  ],
+};
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} /> */}
         <Route path="/" element={<Home workoutList={workouts} />} />
-        {workouts.map((workout) => (
-          <Route
-            path={`/MyCalendar${workout.id}`}
-            element={<Calendar workout={workout} />}
-          />
-        ))}
-        {workouts.map((workout) => (
-          <Route
-            path={`/${workout.id}`}
-            element={<WeekView workout={workout} />}
-          />
-        ))}
+        <Route path={`/MyCalendar`} element={<Calendar />} />
+        <Route path={`/WeekView`} element={<WeekView />} />
       </Routes>
     </Router>
   );
