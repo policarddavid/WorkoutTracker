@@ -44,7 +44,7 @@ const Table: React.FC = () => {
     const formValues = Array.from(event.currentTarget.elements);
     const inputValues = formValues
       .filter((element) => element instanceof HTMLInputElement)
-      .map((input) => input.value);
+      .map((input) => (input as HTMLInputElement).value);
     //delete all the exercies in the day
     updatedWorkout.days[daySelected].exercises = [];
     //for each value in inputValues, add a new exercise to the day
