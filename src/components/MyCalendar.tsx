@@ -1,18 +1,8 @@
 import { differenceInCalendarDays } from "date-fns";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import "./MyCalendar.css";
 import { Workout } from "./Workout";
 import { useRef, useState } from "react";
-const week = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
 let currentDay = 0;
 
 function MyCalendar() {
@@ -45,9 +35,10 @@ function MyCalendar() {
     setDates(updatedDates);
   }
   return (
-    <div>
+    <div className="myCalendar">
       {
         <Calendar
+          calendarType="gregory"
           onClickDay={handleCalendarClick}
           tileClassName={tileClassName}
         />

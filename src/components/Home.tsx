@@ -1,8 +1,11 @@
 import ListGroup from "./ListGroup";
+import Nav from "./Nav";
 import { Workout } from "./Workout";
 import "./Home.css";
 import { useState, useEffect } from "react";
 import { Exercise } from "./Workout";
+import MyCalendar from "./MyCalendar";
+import "./MyCalendar.css";
 const customWorkout: Workout = {
   name: "Your custom workout",
   id: "customWorkout",
@@ -65,7 +68,6 @@ const customWorkout: Workout = {
     },
   ],
 };
-
 interface HomeProps {
   workoutList: Workout[];
 }
@@ -89,18 +91,33 @@ function Home({ workoutList }: HomeProps) {
   workoutIds = workoutList.map((workout) => workout.id);
   return (
     <div className="home">
-      <ListGroup
-        items={workoutNames}
-        keys={workoutIds}
-        heading="Try one of our popular workout plans"
-        onSelectItem={handleSelectItem}
-      />
-      <h2>Or create your own!</h2>
-      <ListGroup
-        items={["Custom workout plan"]}
-        keys={["CustomWorkoutPlan"]}
-        onSelectItem={handleCustomWorkout}
-      />
+      <Nav />
+      <div className="hometitle">
+        <h1 className="title">ICONICFITNESS</h1>
+        <h2 className="subtitle">-Workout Like an Icon-</h2>
+      </div>
+      <div className="content">
+        <div className="chooseworkout">
+          <h2>Choose a workout plan</h2>
+          <ListGroup
+            items={workoutNames}
+            keys={workoutIds}
+            onSelectItem={handleSelectItem}
+          />
+          <h2>Or create your own!</h2>
+          <ListGroup
+            items={["Custom workout plan"]}
+            keys={["CustomWorkoutPlan"]}
+            onSelectItem={handleCustomWorkout}
+          />
+        </div>
+        <div className="trackcalendar">
+          <h2>Track your progress</h2>
+          <div className="calendarPreview">
+            <MyCalendar />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

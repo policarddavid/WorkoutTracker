@@ -3,7 +3,7 @@ import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { Workout } from "./components/Workout";
 import WeekView from "./components/WeekView";
-import Calendar from "./components/MyCalendar";
+import CalendarView from "./components/CalendarView";
 import { Exercise } from "./components/Workout";
 const workouts: Workout[] = [
   {
@@ -155,7 +155,7 @@ function App() {
         {/* <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} /> */}
         <Route path="/" element={<Home workoutList={workouts} />} />
-        <Route path={`/MyCalendar`} element={<Calendar />} />
+        <Route path={`/CalendarView`} element={<CalendarView />} />
         <Route path={`/WeekView`} element={<WeekView />} />
       </Routes>
     </Router>
