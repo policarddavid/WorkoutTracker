@@ -1,8 +1,11 @@
+/// <reference types="vite-plugin-svgr/client" />
 import { differenceInCalendarDays } from "date-fns";
+declare var require: any;
 import Calendar from "react-calendar";
 import "./MyCalendar.css";
 import { Workout } from "./Workout";
 import { useRef, useState } from "react";
+import Fire from "../assets/fire.svg?react";
 let currentDay = 0;
 
 function MyCalendar() {
@@ -24,9 +27,27 @@ function MyCalendar() {
   function isSameDay(a: Date, b: Date) {
     return differenceInCalendarDays(a, b) === 0;
   }
+  function tileContent({ date, view }: { date: Date; view: string }) {
+    if (view === "month") {
+      if (dates.find((dDate) => isSameDay(dDate, date))) {
+        return (
+          <Fire
+            style={{
+              width: 55,
+              height: 55,
+              position: "absolute",
+              bottom: 0,
+              left: -2,
+              zIndex: -1,
+            }}
+          />
+        );
+      }
+    }
+  }
   function tileClassName({ date, view }: { date: Date; view: string }) {
     if (view === "month" && dates.find((dDate) => isSameDay(date, dDate))) {
-      return "highlight";
+      return ["disabled"];
     }
   }
   function handleWorkoutComplete() {
@@ -41,6 +62,8 @@ function MyCalendar() {
           calendarType="gregory"
           onClickDay={handleCalendarClick}
           tileClassName={tileClassName}
+          tileContent={tileContent}
+          formatWeekday={(locale, date) => ""}
         />
       }
       {

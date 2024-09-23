@@ -5,6 +5,7 @@ import { Workout } from "./components/Workout";
 import WeekView from "./components/WeekView";
 import CalendarView from "./components/CalendarView";
 import { Exercise } from "./components/Workout";
+
 const workouts: Workout[] = [
   {
     name: "Arnold Split",

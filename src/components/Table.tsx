@@ -1,4 +1,5 @@
 import React from "react";
+import { EditOutlined } from "@ant-design/icons";
 import { Workout } from "./Workout";
 import "./Table.css";
 import Button from "./Button";
@@ -68,9 +69,12 @@ const Table: React.FC = () => {
           <tr>
             {workout.days.map((day, index) => (
               <th key={index}>
-                {day.name}{" "}
-                <Button onClick={() => handleEdit(index)} color="light">
-                  Edit
+                <Button onClick={() => handleEdit(index)} color="week">
+                  {
+                    <div>
+                      {day.name} <EditOutlined />
+                    </div>
+                  }
                 </Button>
               </th>
             ))}

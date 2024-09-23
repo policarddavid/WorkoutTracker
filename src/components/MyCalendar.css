@@ -2,16 +2,26 @@
     display: none;
   }
   .react-calendar button {
+    justify-content: center;
+    align-items: center;
+    position:relative;
     margin: 0;
     border: 0;
+    max-height: 40px;
+    overflow:visible;
     outline: none;
+    color: white;
+  }
+  .react-calendar__tile {
+    justify-content: center !important;
+    align-items: center !important;
   }
   .react-calendar__navigation {
     display: flex;
     height: 44px;
-    margin-bottom: 1em;
   }
   .react-calendar__navigation button {
+    overflow:visible;
     min-width: 44px;
     background: none;
   }
@@ -21,17 +31,13 @@
     font: inherit;
     font-size: 0.75em;
     font-weight: bold;
+    padding-bottom:10px;
   }
   .react-calendar__month-view__weekdays__weekday {
+    border: none !important;
+    cursor: inherit !important;
+    text-decoration: none !important;
     padding: 0.5em;
-  }
-  .react-calendar__month-view__weekNumbers .react-calendar__tile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font: inherit;
-    font-size: 0.75em;
-    font-weight: bold;
   }
   .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
@@ -51,28 +57,29 @@
   .react-calendar__tile--now {
     background: rgb(36, 57, 194);
   }
-  .react-calendar .highlight{
-    background: url('../assets/fireImg.svg') no-repeat center bottom;  
-    background-size: contain;  
+  .react-calendar .disabled{
+    overflow:visible !important;
+    background-color: none;
     font-weight: bold;
     color: #000000;
 } 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
-  background-color: #737a85;
+  /* background-color: #737a85; */
 }
+.react-calendar__month-view__weekdays__weekday abbr{
+    text-decoration: none !important;
+    border: none !important;
+    cursor: inherit !important;
+}
+
 .react-calendar {
     color: white;
+    text-align: center;
+    justify-content: center;
     width: 350px;
     filter: drop-shadow(0.25rem 0.25rem 0.5rem rgb(0, 0, 0));
     background:linear-gradient(135deg, #6A7586 0%, #445b70 100%);
     border: none;
 
 }
-.react-calendar button {
-    color:white;
-}
-
-  .react-calendar__month-view__days__day--weekend {
-    color: #000000;
-  }

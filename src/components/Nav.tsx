@@ -4,7 +4,9 @@ import "./Nav.css";
 const Nav: React.FC = () => {
   return (
     <nav className="nav" style={{ width: "100%", position: "fixed", top: 0 }}>
-      <li className="logo">IconicFitness</li>
+      <li className="logo">
+        <a href="/">IconicFitness</a>
+      </li>
       <ul className="nav-links">
         <li>
           <a href="/CalendarView">Calendar</a>

@@ -36,7 +36,16 @@
 }
 
 .login a:hover {
-    color: #FF6600; /* Orange */
+    color: #FF6600;
+}
+
+.logo a {
+    color: white;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    color: white;
 }
 
 .nav-links {
@@ -61,4 +70,8 @@
 
 .nav-links a:hover {
     color: #FF6600; /* Orange */
+}
+
+.button {
+    font-size: 6px;
 }

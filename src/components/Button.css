@@ -1,0 +1,15 @@
+.btn-large {
+    background: linear-gradient(135deg, #FD8845 0%, #ff6d18 100%);
+}
+.btn-small {
+    font-size: 12px !important;
+    background: none;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+.btn-week {
+    background:grey;
+}
+.btn-small:hover, .btn-large:hover{
+    background: linear-gradient(135deg, #ff6d18 0%, #FD8845 100%) !important;
+}
