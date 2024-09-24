@@ -1,8 +1,10 @@
 // Workout.ts
+import React, { ReactNode } from "react";
 export interface Workout {
     name: string;
     id: string;
     days: Day[];
+    img?: ReactNode;
   }
 export interface Day {
     name: string;

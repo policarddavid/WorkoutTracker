@@ -5,11 +5,17 @@ import { Workout } from "./components/Workout";
 import WeekView from "./components/WeekView";
 import CalendarView from "./components/CalendarView";
 import { Exercise } from "./components/Workout";
+import IconsView from "./components/IconsView";
+import arnold from "./assets/arnold.jpg";
+import creed from "./assets/creed.jpg";
+const arnoldImg = <img src={arnold} alt="Arnold" />;
+const creedImg = <img src={creed} alt="JLo" />;
 
 const workouts: Workout[] = [
   {
     name: "Arnold Split",
     id: "workout1",
+    img: arnoldImg,
     days: [
       {
         name: "Monday",
@@ -45,15 +51,15 @@ const workouts: Workout[] = [
     ],
   },
   {
-    name: "Ana de armas split",
+    name: "Michael B. Jordan Creed Workout",
     id: "workout2",
+    img: creedImg,
     days: [
       {
         name: "Monday",
         exercises: [
           new Exercise("squats", 3, 10, 0),
           new Exercise("hip thrusts", 3, 10, 0),
-          new Exercise("more squats idk", 3, 10, 0),
         ],
       },
       {
@@ -156,6 +162,10 @@ function App() {
         {/* <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} /> */}
         <Route path="/" element={<Home workoutList={workouts} />} />
+        <Route
+          path="/IconsView"
+          element={<IconsView workoutList={workouts} />}
+        />
         <Route path={`/CalendarView`} element={<CalendarView />} />
         <Route path={`/WeekView`} element={<WeekView />} />
       </Routes>

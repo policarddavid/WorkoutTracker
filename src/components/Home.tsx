@@ -2,6 +2,7 @@ import ListGroup from "./ListGroup";
 import Nav from "./Nav";
 import { Workout } from "./Workout";
 import "./Home.css";
+import Button from "./Button";
 import { useState, useEffect } from "react";
 import { Exercise } from "./Workout";
 import MyCalendar from "./MyCalendar";
@@ -98,21 +99,27 @@ function Home({ workoutList }: HomeProps) {
       </div>
       <div className="content">
         <div className="chooseworkout">
-          <h2>Choose a workout plan</h2>
-          <ListGroup
-            items={workoutNames}
-            keys={workoutIds}
-            onSelectItem={handleSelectItem}
-          />
-          <h2>Or create your own!</h2>
-          <ListGroup
-            items={["Custom workout plan"]}
-            keys={["CustomWorkoutPlan"]}
-            onSelectItem={handleCustomWorkout}
-          />
+          <div className="textButton">
+            <h2 className="subtitle">Choose a popular workout plan</h2>
+            <Button
+              color="large"
+              onClick={() => (window.location.href = "/IconsView")}
+            >
+              Browse Workouts
+            </Button>
+          </div>
+          <div className="textButton">
+            <h2 className="subtitle">Or create your own!</h2>
+            <Button
+              color="large"
+              onClick={() => (window.location.href = "/IconsView")}
+            >
+              Custom Workout
+            </Button>
+          </div>
         </div>
         <div className="trackcalendar">
-          <h2>Track your progress</h2>
+          <h2 className="heading">Track your progress</h2>
           <div className="calendarPreview">
             <MyCalendar />
           </div>

@@ -6,10 +6,10 @@ import "./Nav.css";
 const CalendarView: React.FC = () => {
   return (
     <div className="view-calendar">
-      <Nav />
       <div className="calendar">
         <MyCalendar />
       </div>
+      <Nav />
     </div>
   );
 };
