@@ -1,5 +1,5 @@
 import React from "react";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined, StopOutlined, PlusOutlined } from "@ant-design/icons";
 import { Workout } from "./Workout";
 import "./Table.css";
 import Button from "./Button";
@@ -60,11 +60,13 @@ const Table: React.FC = () => {
     (document.getElementById("editor") as HTMLFormElement)?.reset();
   };
   return (
-    <div className="table-responsive">
+    <div className="myTable">
       <table className="table table-striped-columns">
         <thead>
           <tr>
-            <th colSpan={workout.days.length}>{workout.name}</th>
+            <th className="workoutName" colSpan={workout.days.length}>
+              {workout.name}
+            </th>
           </tr>
           <tr>
             {workout.days.map((day, index) => (
@@ -94,9 +96,9 @@ const Table: React.FC = () => {
           ))}
         </tbody>
       </table>
-      <dialog ref={dialogRef}>
+      <dialog className="editDay" ref={dialogRef}>
         <form onSubmit={saveChanges} id="editor">
-          <table className="table">
+          <table className="table custom">
             <thead>
               <tr>
                 <th>{updatedWorkout.days[daySelected]?.name}</th>
@@ -105,39 +107,46 @@ const Table: React.FC = () => {
             <tbody>
               <tr>
                 <td>
-                  {updatedWorkout?.days[daySelected].exercises.map(
-                    (exercise, index) => (
-                      <div key={index}>
-                        <input
-                          name={index.toString()}
-                          type="text"
-                          defaultValue={exercise.details}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => handleRemove(index)}
-                        >
-                          remove
-                        </button>
-                      </div>
-                    )
-                  )}
+                  <div>
+                    {updatedWorkout?.days[daySelected].exercises.map(
+                      (exercise, index) => (
+                        <div key={index} className="exerciseList">
+                          <input
+                            className="exerciseInput"
+                            name={index.toString()}
+                            type="text"
+                            defaultValue={exercise.details}
+                          />
+                          <Button
+                            color="transparent"
+                            onClick={() => handleRemove(index)}
+                          >
+                            <StopOutlined />
+                          </Button>
+                        </div>
+                      )
+                    )}
+                    <Button color="transparent" onClick={handleAdd}>
+                      <PlusOutlined />
+                    </Button>
+                  </div>
                 </td>
               </tr>
             </tbody>
-            <button type="button" onClick={handleAdd}>
-              add
-            </button>
           </table>
-          <button
-            type="button"
-            onClick={() => {
-              handleExit();
-            }}
-          >
-            Exit
-          </button>
-          <button type="submit">Save Changes</button>
+          <div className="formButtons">
+            <button
+              className="formControl"
+              onClick={() => {
+                handleExit();
+              }}
+            >
+              Exit
+            </button>
+            <button className="formControl" type="submit">
+              Save
+            </button>
+          </div>
         </form>
       </dialog>
     </div>

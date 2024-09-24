@@ -3,7 +3,14 @@ import "./Button.css";
 interface Props {
   children: ReactNode;
   onClick: () => void;
-  color?: "small" | "large" | "light" | "dark" | "primary" | "week";
+  color?:
+    | "small"
+    | "large"
+    | "light"
+    | "dark"
+    | "primary"
+    | "week"
+    | "transparent";
 }
 const Button = ({ children, onClick, color = "primary" }: Props) => {
   return (

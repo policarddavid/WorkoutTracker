@@ -10,14 +10,16 @@ const WeekView: React.FC = () => {
   let workout: Workout = JSON.parse(localStorage.getItem("myWorkout")!);
   return (
     <div className="weekpage">
-      <Nav />
-      <Table />
+      <div className="tableContainer">
+        <Table />
+      </div>
       <Button
         onClick={() => (window.location.href = `/CalendarView`)}
         color="large"
       >
-        View My Calendar
+        View Calendar
       </Button>
+      <Nav />
     </div>
   );
 };
