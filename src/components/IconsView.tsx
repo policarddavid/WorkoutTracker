@@ -1,5 +1,5 @@
 import Card from "./Card";
-import Nav from "./Nav";
+import NavBar from "./NavBar";
 import "./Nav.css";
 import "./IconsView.css";
 import workoutsdata from "../assets/workouts.json";
@@ -19,7 +19,7 @@ const IconsView: React.FC = () => {
           />
         ))}
       </div>
-      <Nav />
+      <NavBar />
     </div>
   );
 };

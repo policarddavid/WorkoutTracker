@@ -1,4 +1,4 @@
-import Nav from "./Nav";
+import NavBar from "./NavBar";
 import "./Home.css";
 import Button from "./Button";
 import MyCalendar from "./MyCalendar";
@@ -11,7 +11,6 @@ const Home: React.FC = () => {
   };
   return (
     <div className="home">
-      <Nav />
       <div className="hometitle">
         <h1 className="title">ICONICFITNESS</h1>
         <h2 className="subtitle">-Workout Like an Icon-</h2>
@@ -46,6 +45,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
+      <NavBar />
     </div>
   );
 };

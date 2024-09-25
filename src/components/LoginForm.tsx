@@ -1,23 +1,68 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import React, { useState } from "react";
+import axios from "axios";
 
-function LoginForm() {
+const LoginForm: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [errors, setErrors] = useState<string[]>([]);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    axios
+      .post("http://127.0.0.1:8000/api/token/", {
+        username,
+        password,
+      })
+      .then((response) => {
+        console.log(response.data);
+        localStorage.setItem("accessToken", response.data.access);
+        localStorage.setItem("refreshToken", response.data.refresh);
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        let tempErrors: string[] = [];
+        for (let key in error.response.data) {
+          tempErrors.push(error.response.data[key]);
+        }
+        setErrors(tempErrors);
+      });
+  };
   return (
-    <Form className="form-container">
-      <Form.Group className="mb-3 email" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-      </Form.Group>
+    <div className="form-container">
+      <Form className="loginForm" onSubmit={handleLogin}>
+        <Form.Group className="mb-3 email" controlId="formBasicEmail">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="username"
+            placeholder="Enter username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Button variant="light" type="submit">
-        Login
-      </Button>
-    </Form>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+        <Button variant="light" type="submit">
+          Login
+        </Button>
+      </Form>
+      {errors.map((message, index) => (
+        <Alert key={index} variant="danger">
+          {message + " "}
+        </Alert>
+      ))}
+    </div>
   );
-}
+};
 
 export default LoginForm;

@@ -3,7 +3,7 @@ import Table from "./Table";
 import { Workout } from "./Workout";
 import Button from "./Button";
 import "./WeekView.css";
-import Nav from "./Nav";
+import NavBar from "./NavBar";
 import "./Nav.css";
 
 const WeekView = () => {
@@ -18,7 +18,7 @@ const WeekView = () => {
       >
         View Calendar
       </Button>
-      <Nav />
+      <NavBar />
     </div>
   );
 };
