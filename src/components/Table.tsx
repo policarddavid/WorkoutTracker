@@ -4,8 +4,13 @@ import { Workout } from "./Workout";
 import "./Table.css";
 import Button from "./Button";
 import { useRef, useState } from "react";
+import customworkoutdata from "../assets/customworkout.json";
 
 const Table: React.FC = () => {
+  if (!localStorage.getItem("myWorkout")) {
+    localStorage.setItem("myWorkout", JSON.stringify(customworkoutdata));
+  }
+
   const [workout, setWorkout] = useState<Workout>(
     JSON.parse(localStorage.getItem("myWorkout")!)
   );

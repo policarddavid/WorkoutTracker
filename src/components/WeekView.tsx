@@ -6,8 +6,7 @@ import "./WeekView.css";
 import Nav from "./Nav";
 import "./Nav.css";
 
-const WeekView: React.FC = () => {
-  let workout: Workout = JSON.parse(localStorage.getItem("myWorkout")!);
+const WeekView = () => {
   return (
     <div className="weekpage">
       <div className="tableContainer">

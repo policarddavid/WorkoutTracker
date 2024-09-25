@@ -1,5 +1,5 @@
 /// <reference types="vite-plugin-svgr/client" />
-import { differenceInCalendarDays } from "date-fns";
+import { differenceInCalendarDays, set } from "date-fns";
 declare var require: any;
 import Calendar from "react-calendar";
 import "./MyCalendar.css";
@@ -17,11 +17,7 @@ function MyCalendar() {
   const handleCalendarClick = (day: Date) => {
     setDate(day);
     currentDay = day.getDay();
-    if (currentDay === 0) {
-      setDay(6);
-    } else {
-      setDay(currentDay - 1);
-    }
+    setDay(currentDay);
     dialogRef.current?.showModal();
   };
   function isSameDay(a: Date, b: Date) {
