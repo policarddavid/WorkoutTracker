@@ -1,0 +1,207 @@
+{
+  "workouts": [
+    {
+      "name": "Arnold Split",
+      "id": "workout1",
+      "img": "arnold",
+      "days": [
+        {
+          "name": "Sunday",
+          "exercises": [
+            {
+              "name": "Rest",
+              "sets": 0,
+              "reps": 0,
+              "weight": 0,
+              "details": "Rest 0x0 0lbs"
+            }
+          ]
+        },
+        {
+          "name": "Monday",
+          "exercises": [
+            {
+              "name": "Push-ups",
+              "sets": 3,
+              "reps": 10,
+              "weight": 0,
+              "details": "Push-ups 3x10 0lbs"
+            },
+            {
+              "name": "Box Jumps",
+              "sets": 3,
+              "reps": 10,
+              "weight": 0,
+              "details": "Box Jumps 3x10 0lbs"
+            }
+          ]
+        },
+        {
+          "name": "Tuesday",
+          "exercises": [
+            {
+              "name": "Squats",
+              "sets": 3,
+              "reps": 10,
+              "weight": 0,
+              "details": "Squats 3x10 0lbs"
+            }
+          ]
+        },
+        {
+          "name": "Wednesday",
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 3,
+              "reps": 8,
+              "weight": 0,
+              "details": "Pull-ups 3x8 0lbs"
+            }
+          ]
+        },
+        {
+          "name": "Thursday",
+          "exercises": [
+            {
+              "name": "Deadlifts",
+              "sets": 3,
+              "reps": 5,
+              "weight": 100,
+              "details": "Deadlifts 3x5 100lbs"
+            }
+          ]
+        },
+        {
+          "name": "Friday",
+          "exercises": [
+            {
+              "name": "Bench Press",
+              "sets": 3,
+              "reps": 10,
+              "weight": 50,
+              "details": "Bench Press 3x10 50lbs"
+            }
+          ]
+        },
+        {
+          "name": "Saturday",
+          "exercises": [
+            {
+              "name": "Lunges",
+              "sets": 3,
+              "reps": 12,
+              "weight": 0,
+              "details": "Lunges 3x12 0lbs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Michael B. Jordan Creed Workout",
+      "id": "workout2",
+      "img": "creed",
+      "days": [
+        {
+          "name": "Sunday",
+          "exercises": [
+            {
+              "name": "Rest",
+              "sets": 0,
+              "reps": 0,
+              "weight": 0,
+              "details": "Rest 0x0 0lbs"
+            }
+          ]
+        },
+        {
+          "name": "Monday",
+          "exercises": [
+            {
+              "name": "squats",
+              "sets": 3,
+              "reps": 10,
+              "weight": 0,
+              "details": "squats 3x10 0lbs"
+            },
+            {
+              "name": "hip thrusts",
+              "sets": 3,
+              "reps": 10,
+              "weight": 0,
+              "details": "hip thrusts 3x10 0lbs"
+            }
+          ]
+        },
+        {
+          "name": "Tuesday",
+          "exercises": [
+            {
+              "name": "hip abductors",
+              "sets": 3,
+              "reps": 15,
+              "weight": 0,
+              "details": "hip abductors 3x15 0lbs"
+            },
+            {
+              "name": "hip thrust",
+              "sets": 3,
+              "reps": 125,
+              "weight": 0,
+              "details": "hip thrust 3x125 0lbs"
+            }
+          ]
+        },
+        {
+          "name": "Wednesday",
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 3,
+              "reps": 8,
+              "weight": 0,
+              "details": "Pull-ups 3x8 0lbs"
+            }
+          ]
+        },
+        {
+          "name": "Thursday",
+          "exercises": [
+            {
+              "name": "Deadlifts",
+              "sets": 3,
+              "reps": 5,
+              "weight": 100,
+              "details": "Deadlifts 3x5 100lbs"
+            }
+          ]
+        },
+        {
+          "name": "Friday",
+          "exercises": [
+            {
+              "name": "Bench Press",
+              "sets": 3,
+              "reps": 10,
+              "weight": 50,
+              "details": "Bench Press 3x10 50lbs"
+            }
+          ]
+        },
+        {
+          "name": "Saturday",
+          "exercises": [
+            {
+              "name": "Lunges",
+              "sets": 3,
+              "reps": 12,
+              "weight": 0,
+              "details": "Lunges 3x12 0lbs"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

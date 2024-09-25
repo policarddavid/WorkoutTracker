@@ -1,0 +1,92 @@
+
+{
+    "name": "Your custom workout",
+    "id": "workout0",
+    "img": "jlo.jpg",
+    "days": [
+        {
+            "name": "Sunday",
+            "exercises": [
+                {
+                    "name": "Rest",
+                    "sets": 0,
+                    "reps": 0,
+                    "weight": 0,
+                    "details": "Your exercise goes here!"
+                }
+            ]
+        },
+        {
+            "name": "Monday",
+            "exercises": [
+                {
+                    "name": "Rest",
+                    "sets": 0,
+                    "reps": 0,
+                    "weight": 0,
+                    "details": "Your exercise goes here!"
+                }
+            ]
+        },
+        {
+            "name": "Tuesday",
+            "exercises": [
+                {
+                    "name": "Rest",
+                    "sets": 0,
+                    "reps": 0,
+                    "weight": 0,
+                    "details": "Your exercise goes here!"
+                }
+            ]
+        },
+        {
+            "name": "Wednesday",
+            "exercises": [
+                {
+                    "name": "Rest",
+                    "sets": 0,
+                    "reps": 0,
+                    "weight": 0,
+                    "details": "Your exercise goes here!"
+                }
+            ]
+        },
+        {
+            "name": "Thursday",
+            "exercises": [
+                {
+                    "name": "Rest",
+                    "sets": 0,
+                    "reps": 0,
+                    "weight": 0,
+                    "details": "Your exercise goes here!"
+                }
+            ]
+        },
+        {
+            "name": "Friday",
+            "exercises": [
+                {
+                    "name": "Rest",
+                    "sets": 0,
+                    "reps": 0,
+                    "weight": 0,
+                    "details": "Your exercise goes here!"
+                }
+            ]
+        },
+        {
+            "name": "Saturday",
+            "exercises": [
+                {
+                    "name": "Rest",
+                    "sets": 0,
+                    "reps": 0,
+                    "weight": 0,
+                    "details": "Your exercise goes here!"
+                }
+            ]
+        }
+    ]
+}

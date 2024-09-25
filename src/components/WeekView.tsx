@@ -2,18 +2,23 @@ import React from "react";
 import Table from "./Table";
 import { Workout } from "./Workout";
 import Button from "./Button";
+import "./WeekView.css";
+import Nav from "./Nav";
+import "./Nav.css";
 
-const WeekView: React.FC = () => {
-  let workout: Workout = JSON.parse(localStorage.getItem("myWorkout")!);
+const WeekView = () => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <Table />
+    <div className="weekpage">
+      <div className="tableContainer">
+        <Table />
+      </div>
       <Button
-        onClick={() => (window.location.href = `/MyCalendar`)}
-        color="dark"
+        onClick={() => (window.location.href = `/CalendarView`)}
+        color="large"
       >
-        View My Calendar
+        View Calendar
       </Button>
+      <Nav />
     </div>
   );
 };

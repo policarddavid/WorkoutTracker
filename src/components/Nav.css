@@ -1,0 +1,43 @@
+/* Navbar.css */
+.nav {
+    background: linear-gradient(90deg, #323E47 0%, #212F3C 100%);
+    display: flex;
+    flex-direction: row;
+    color: white;
+    filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+}
+
+.nav-links {
+    display:flex;
+    flex-grow: 1;
+    font-family: 'Montserrat', sans-serif;
+    list-style: none;
+    padding:0;
+    margin:1rem;
+    justify-content: start;
+    align-items: center;
+}
+.nav-links li{
+    padding-left:1rem;
+}
+.nav-links li:last-child{
+    margin-left:auto;
+}
+.nav-links .logo {
+    font-weight: bold;
+    padding-left:0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.nav-links a:hover {
+    color: #FF6600; /* Orange */
+}
+
+.button {
+    font-size: 6px;
+}

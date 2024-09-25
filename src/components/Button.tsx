@@ -1,16 +1,16 @@
 import React, { ReactNode } from "react";
+import "./Button.css";
 interface Props {
   children: ReactNode;
   onClick: () => void;
   color?:
-    | "primary"
-    | "secondary"
-    | "success"
-    | "danger"
-    | "warning"
-    | "info"
+    | "small"
+    | "large"
     | "light"
-    | "dark";
+    | "dark"
+    | "primary"
+    | "week"
+    | "transparent";
 }
 const Button = ({ children, onClick, color = "primary" }: Props) => {
   return (

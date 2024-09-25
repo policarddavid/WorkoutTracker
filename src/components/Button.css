@@ -1,0 +1,34 @@
+.btn-large {
+    background: linear-gradient(135deg, #FD8845 0%, #ff6d18 100%);
+}
+.btn-small {
+    font-size: 12px;
+    background: linear-gradient(135deg, #FD8845 0%, #ff6d18 100%);
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+button.btn.btn-week {
+    background:#6A7586;
+    color:black;
+    border:solid 2px black;
+    border-top:solid 1px rgba(0, 0, 0, 0.459);
+    border-left:solid 1px rgba(0, 0, 0, 0.459);
+    font-weight:bold;
+}
+
+button.btn.btn-transparent {
+    background: transparent;
+    padding:0;
+    transform: scale(0.85);
+}
+
+
+button.btn.btn-week:hover {
+    background: #616c7b;
+    border:solid 2px black;
+    border-bottom:solid 1px rgba(0, 0, 0, 0.459);
+    border-right:solid 1px rgba(0, 0, 0, 0.459);
+}
+.btn-small:hover, .btn-large:hover{
+    background: linear-gradient(135deg, #ff6d18 0%, #FD8845 100%) !important;
+}

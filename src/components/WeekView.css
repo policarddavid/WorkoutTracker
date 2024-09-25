@@ -1,0 +1,15 @@
+.weekpage{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(135deg, #6A7586 0%, #30404F 100%);
+}
+
+.tableContainer {
+    max-width:90vw;
+    margin-bottom:3rem;
+}

@@ -1,12 +1,85 @@
-@import url('react-calendar/dist/Calendar.css');
+.react-calendar__month-view__days__day--neighboringMonth {
+    display: none;
+  }
+  .react-calendar button {
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    margin: 0;
+    border: 0;
+    max-height: 40px;
+    overflow:visible;
+    outline: none;
+    color: white;
+  }
+  .react-calendar__tile {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .react-calendar__navigation {
+    display: flex;
+    height: 44px;
+  }
+  .react-calendar__navigation button {
+    overflow:visible;
+    min-width: 44px;
+    background: none;
+  }
+  .react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font: inherit;
+    font-size: 0.75em;
+    font-weight: bold;
+    padding-bottom:10px;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    border: none !important;
+    cursor: inherit !important;
+    text-decoration: none !important;
+    /* padding: 0.5em; */
+  }
+  /* .react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+} */
+.react-calendar__tile {
+    /* max-width: 100%; */
+    padding: 10px 6.6667px;
+    background: none;
+    text-align: center;
+    line-height: 16px;
+    font: inherit;
+    font-size: 0.833em;
+  }
+
+  .react-calendar__tile--now {
+    background: rgb(36, 57, 194);
+  }
+  .react-calendar .disabled{
+    overflow:visible !important;
+    background-color: none;
+    font-weight: bold;
+    color: #000000;
+} 
+/* .react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #737a85;
+} */
+.react-calendar__month-view__weekdays__weekday abbr{
+    text-decoration: none !important;
+    border: none !important;
+    cursor: inherit !important;
+}
 
 .react-calendar {
-    margin: 0 auto;
-    margin-top: 25vh;
-    transform: scale(1.5);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    width: 21rem;
+    filter: drop-shadow(0.25rem 0.25rem 0.5rem rgb(0, 0, 0));
+    background:linear-gradient(135deg, #6A7586 0%, #445b70 100%);
+    border: none;
+
 }
-.react-calendar .highlight{
-    background-color: #0bb830;
-    color: #ffffff;
-  }
-  

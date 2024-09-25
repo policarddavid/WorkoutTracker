@@ -1,22 +1,45 @@
-.table-responsive {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh; 
-    padding-top: 10vh;
-    padding-left: 10vh;
-    padding-right:10vh;
+.myTable .table.table.table-striped-columns{
+    background-color:#6A7586 ;
+    --bs-table-bg: transparent;
 }
-table tbody tr td {
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-  }
-table thead th {
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;    
-    font-size: 20px;
-    text-align: center;
+
+.table.table.table-striped-columns {
+    filter: drop-shadow(0.25rem 0.25rem 0.5rem rgb(0, 0, 0));
+    table-layout: fixed;
 }
-  
+
+.workoutName {
+    font-size:25px;
+    font-weight:bold;
+}
+
+.editDay{
+    background-color:#6A7586 ;
+}
+
+.table.table.custom{
+    --bs-table-bg:transparent;
+}
+
+.exerciseInput{
+    outline-width:0;
+    margin-right:10px;
+}
+
+.exerciseList{
+    display:flex;
+    margin-bottom:4px;
+}
+
+.formButtons{
+    display:flex;
+    justify-content:space-between;
+}
+
+.formControl{
+    background:#6A7586;
+    color:black;
+    font-size:14px;
+    padding-top:0;
+}
+
