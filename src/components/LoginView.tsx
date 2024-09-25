@@ -1,9 +1,10 @@
-// src/pages/LoginPage.tsx
-
 import React, { useState } from "react";
 import axios from "axios";
+import LoginForm from "./LoginForm";
+import Nav from "./Nav";
+import "./LoginView.css";
 
-const LoginPage: React.FC = () => {
+const LoginView: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -23,25 +24,13 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={username}
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        value={password}
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit" onClick={handleLogin}>
-        {" "}
-        Submit
-      </button>
+    <div className="background">
+      <div className="login-container">
+        <LoginForm />
+      </div>
+      <Nav />
     </div>
   );
 };
 
-export default LoginPage;
+export default LoginView;

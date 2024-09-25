@@ -17,8 +17,12 @@ const Nav: React.FC = () => {
         <li>
           <a href="/CalendarView">Calendar</a>
         </li>
+        <li className="spacer"></li>
         <li>
-          <a href="#">login</a>
+          <a href="/SignupView">Register</a>
+        </li>
+        <li>
+          <a href="/LoginView">login</a>
         </li>
       </ul>
     </nav>

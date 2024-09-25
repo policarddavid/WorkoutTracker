@@ -20,7 +20,7 @@
 .nav-links li{
     padding-left:1rem;
 }
-.nav-links li:last-child{
+.nav-links .spacer{
     margin-left:auto;
 }
 .nav-links .logo {

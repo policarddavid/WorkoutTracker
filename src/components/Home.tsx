@@ -2,9 +2,13 @@ import Nav from "./Nav";
 import "./Home.css";
 import Button from "./Button";
 import MyCalendar from "./MyCalendar";
-import "./MyCalendar.css";
+import customworkoutdata from "../assets/customworkout.json";
 
 const Home: React.FC = () => {
+  const handleCustomWorkout = () => {
+    localStorage.setItem("myWorkout", JSON.stringify(customworkoutdata));
+    window.location.href = "/WeekView";
+  };
   return (
     <div className="home">
       <Nav />
@@ -27,7 +31,9 @@ const Home: React.FC = () => {
             <h2 className="subtitle">Or create your own!</h2>
             <Button
               color="large"
-              onClick={() => (window.location.href = "/IconsView")}
+              onClick={() => {
+                handleCustomWorkout();
+              }}
             >
               Custom Workout
             </Button>

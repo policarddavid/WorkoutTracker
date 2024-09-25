@@ -1,5 +1,6 @@
 // src/pages/SignupPage.tsx
-
+import Nav from "../components/Nav";
+import SignupForm from "../components/SignupForm";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -32,35 +33,11 @@ const SignupPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <input
-        type="email"
-        value={email}
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="text"
-        value={username}
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="text"
-        value={first_name}
-        placeholder="Name"
-        onChange={(e) => setFirst_name(e.target.value)}
-      />
-      <input
-        type="password"
-        value={password}
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit" onClick={handleSignup}>
-        {" "}
-        Submit{" "}
-      </button>
+    <div className="background">
+      <div className="signup-container">
+        <SignupForm />
+      </div>
+      <Nav />
     </div>
   );
 };

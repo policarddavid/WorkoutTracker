@@ -1,0 +1,25 @@
+.form-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.091);
+	padding: 20px;
+	border-radius: 10px;
+	color: white;
+}
+
+.mb-3.email {
+	padding-left:2em;
+	padding-right:2em;
+}
+
+.mb-3 {
+	display:flex;
+	flex-direction:column;
+	flex-grow: 1;
+	align-content:center;
+	justify-content:center;
+	text-align:center;
+	flex-wrap: wrap;
+}
