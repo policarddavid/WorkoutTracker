@@ -11,10 +11,24 @@ interface Props {
     | "primary"
     | "week"
     | "transparent";
+  disabled?: boolean;
+  target?: string;
 }
-const Button = ({ children, onClick, color = "primary" }: Props) => {
+const Button = ({
+  children,
+  onClick,
+  color = "primary",
+  disabled = false,
+  target = "",
+}: Props) => {
   return (
-    <button type="button" className={"btn btn-" + color} onClick={onClick}>
+    <button
+      data-toggle="modal"
+      data-target={target}
+      type="button"
+      className={"btn btn-" + color}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

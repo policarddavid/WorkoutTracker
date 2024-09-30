@@ -1,6 +1,4 @@
-import React from "react";
 import Table from "./Table";
-import { Workout } from "./Workout";
 import Button from "./Button";
 import "./WeekView.css";
 import NavBar from "./NavBar";

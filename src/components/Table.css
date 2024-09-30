@@ -8,9 +8,19 @@
     table-layout: fixed;
 }
 
-.workoutName {
+.myTable .workoutName {
+    display:flex;
+    flex-shrink:0;
+    justify-content:space-around;
     font-size:25px;
     font-weight:bold;
+}
+.modal-dialog .modal-content {
+    background-color: #8894b0;
+}
+
+.myTable .titleRow{
+    justify-content:center;
 }
 
 .editDay{

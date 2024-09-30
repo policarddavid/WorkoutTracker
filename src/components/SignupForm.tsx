@@ -10,7 +10,8 @@ const LoginForm: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
-
+  const currentWorkout = JSON.stringify(localStorage.getItem("myWorkout"));
+  console.log(currentWorkout);
   let navigate = useNavigate();
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,6 +19,7 @@ const LoginForm: React.FC = () => {
       .post("http://127.0.0.1:8000/register/", {
         username,
         password,
+        workout: currentWorkout,
       })
       .then((response) => {
         console.log(response.data);

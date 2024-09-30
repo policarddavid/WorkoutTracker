@@ -6,10 +6,19 @@ import "./MyCalendar.css";
 import { Workout } from "./Workout";
 import { useRef, useState } from "react";
 import Fire from "../assets/fire.svg?react";
+import customworkoutdata from "../assets/customworkout.json";
 let currentDay = 0;
 
 function MyCalendar() {
+  if (
+    !localStorage.getItem("myWorkout") ||
+    localStorage.getItem("myWorkout") === ""
+  ) {
+    localStorage.setItem("myWorkout", JSON.stringify(customworkoutdata));
+  }
   let storedWorkout: Workout = JSON.parse(localStorage.getItem("myWorkout")!);
+  console.log("stored workout grabbed: " + storedWorkout);
+
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [daySelected, setDay] = useState<number | 0>(0);
   const [dateSelected, setDate] = useState<Date>(new Date());

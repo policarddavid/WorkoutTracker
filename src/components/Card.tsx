@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import Button from "./Button";
 import workoutsdata from "../assets/workouts.json";
 import { Workout } from "./Workout";
@@ -10,7 +9,6 @@ interface Props {
   text?: string;
 }
 const handleClick = (id: string) => {
-  console.log(id);
   const workoutData = workoutsdata.workouts.find(
     (workout) => workout.id === id
   );
