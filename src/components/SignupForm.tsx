@@ -4,19 +4,20 @@ import Form from "react-bootstrap/Form";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import config from "../../config";
 
 const LoginForm: React.FC = () => {
+  const apiIp: string = config.apiIp;
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
   const currentWorkout = JSON.stringify(localStorage.getItem("myWorkout"));
-  console.log(currentWorkout);
   let navigate = useNavigate();
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:8000/register/", {
+      .post(`${apiIp}/register/`, {
         username,
         password,
         workout: currentWorkout,
