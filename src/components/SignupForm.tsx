@@ -20,6 +20,7 @@ const LoginForm: React.FC = () => {
         username,
         password,
         workout: currentWorkout,
+        calendar: '""',
       })
       .then((response) => {
         console.log(response.data);

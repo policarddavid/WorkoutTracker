@@ -1,12 +1,14 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { differenceInCalendarDays, set } from "date-fns";
-declare var require: any;
 import Calendar from "react-calendar";
 import "./MyCalendar.css";
+import Button from "./Button";
 import { Workout } from "./Workout";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Fire from "../assets/fire.svg?react";
 import customworkoutdata from "../assets/customworkout.json";
+import axios from "axios";
+
 let currentDay = 0;
 
 function MyCalendar() {
@@ -23,8 +25,18 @@ function MyCalendar() {
   const [daySelected, setDay] = useState<number | 0>(0);
   const [dateSelected, setDate] = useState<Date>(new Date());
   const [dates, setDates] = useState<Date[]>([]);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("loggedIn"));
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("loggedIn"));
+  }, []);
+  useEffect(() => {
+    if (loggedIn && localStorage.getItem("calendar") != "") {
+      setDates(JSON.parse(localStorage.getItem("calendar")!));
+    }
+  }, []);
   const handleCalendarClick = (day: Date) => {
     setDate(day);
+    console.log(day);
     currentDay = day.getDay();
     setDay(currentDay);
     dialogRef.current?.showModal();
@@ -59,6 +71,25 @@ function MyCalendar() {
     dialogRef.current?.close();
     const updatedDates = [...dates, dateSelected];
     setDates(updatedDates);
+    localStorage.setItem("calendar", JSON.stringify(updatedDates));
+    if (loggedIn) {
+      axios
+        .post(
+          "http://127.0.0.1:8000/updateCalendar/",
+          { calendar: JSON.stringify(localStorage.getItem("calendar")!) },
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("accessToken"),
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    }
   }
   return (
     <div className="myCalendar">
@@ -72,7 +103,7 @@ function MyCalendar() {
         />
       }
       {
-        <dialog ref={dialogRef}>
+        <dialog className="dialog" ref={dialogRef}>
           <table className="table">
             <thead>
               <tr>
@@ -91,8 +122,12 @@ function MyCalendar() {
               </tr>
             </tbody>
           </table>
-          <button onClick={() => dialogRef.current?.close()}>Close</button>
-          <button onClick={handleWorkoutComplete}>Workout Complete!</button>
+          <Button color="week" onClick={() => dialogRef.current?.close()}>
+            Close
+          </Button>
+          <Button color="week" onClick={handleWorkoutComplete}>
+            Workout Complete!
+          </Button>
         </dialog>
       }
     </div>

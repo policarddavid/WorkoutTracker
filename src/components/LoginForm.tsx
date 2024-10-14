@@ -21,6 +21,26 @@ const LoginForm: React.FC = () => {
         localStorage.setItem("accessToken", response.data.access);
         localStorage.setItem("refreshToken", response.data.refresh);
         localStorage.setItem("loggedIn", "true");
+        axios
+          .get("http://127.0.0.1:8000/user/", {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("accessToken"),
+            },
+          })
+          .then((response) => {
+            localStorage.setItem(
+              `myWorkout`,
+              JSON.parse(response.data.workout)
+            );
+            localStorage.setItem(
+              `calendar`,
+              JSON.parse(response.data.calendar)
+            );
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+
         window.location.href = "/";
       })
       .catch((error) => {

@@ -1,5 +1,5 @@
 .react-calendar__month-view__days__day--neighboringMonth {
-    display: none;
+    visibility: hidden;
   }
   .react-calendar button {
     justify-content: center;
@@ -54,9 +54,9 @@
     font-size: 0.833em;
   }
 
-  .react-calendar__tile--now {
+  /* .react-calendar__tile--now {
     background: rgb(36, 57, 194);
-  }
+  } */
   .react-calendar .disabled{
     overflow:visible !important;
     background-color: none;
@@ -82,4 +82,13 @@
     background:linear-gradient(135deg, #6A7586 0%, #445b70 100%);
     border: none;
 
+}
+.dialog{
+    background-color: #6A7586;
+    filter: drop-shadow(0.25rem 0.25rem 0.5rem rgb(0, 0, 0));
+
+}
+
+.dialog .table {
+    --bs-table-bg: transparent;
 }
