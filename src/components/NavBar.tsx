@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import Nav from "react-bootstrap/Nav";
 import axios from "axios";
 import "./Nav.css";
+import config from "../../config";
 
 const NavBar: React.FC = () => {
+  const apiIp: string = config.apiIp;
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("loggedIn"));
   const [username, setUsername] = useState("");
   const handleLogout = () => {
@@ -16,7 +18,7 @@ const NavBar: React.FC = () => {
     const getUserData = () => {
       if (loggedIn) {
         axios
-          .get("http://127.0.0.1:8000/user/", {
+          .get(`${apiIp}/user/`, {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("accessToken"),
             },

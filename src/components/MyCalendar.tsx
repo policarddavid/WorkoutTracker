@@ -8,10 +8,12 @@ import { useRef, useState, useEffect } from "react";
 import Fire from "../assets/fire.svg?react";
 import customworkoutdata from "../assets/customworkout.json";
 import axios from "axios";
+import config from "../../config";
 
 let currentDay = 0;
 
 function MyCalendar() {
+  const apiIp: string = config.apiIp;
   if (
     !localStorage.getItem("myWorkout") ||
     localStorage.getItem("myWorkout") === ""
@@ -19,7 +21,6 @@ function MyCalendar() {
     localStorage.setItem("myWorkout", JSON.stringify(customworkoutdata));
   }
   let storedWorkout: Workout = JSON.parse(localStorage.getItem("myWorkout")!);
-  console.log("stored workout grabbed: " + storedWorkout);
 
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [daySelected, setDay] = useState<number | 0>(0);
@@ -36,7 +37,6 @@ function MyCalendar() {
   }, []);
   const handleCalendarClick = (day: Date) => {
     setDate(day);
-    console.log(day);
     currentDay = day.getDay();
     setDay(currentDay);
     dialogRef.current?.showModal();
@@ -75,7 +75,7 @@ function MyCalendar() {
     if (loggedIn) {
       axios
         .post(
-          "http://127.0.0.1:8000/updateCalendar/",
+          `${apiIp}/updateCalendar/`,
           { calendar: JSON.stringify(localStorage.getItem("calendar")!) },
           {
             headers: {

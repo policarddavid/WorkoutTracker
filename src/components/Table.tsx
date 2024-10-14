@@ -6,8 +6,10 @@ import Button from "./Button";
 import customworkoutdata from "../assets/customworkout.json";
 import axios from "axios";
 import { Modal, Button as ModalButton } from "react-bootstrap";
+import config from "../../config";
 
 const Table: React.FC = () => {
+  const apiIp: string = config.apiIp;
   const [show, setShow] = useState(false);
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("loggedIn"));
   const handleClose = () => setShow(false);
@@ -17,7 +19,6 @@ const Table: React.FC = () => {
   });
 
   if (!localStorage.getItem("myWorkout")) {
-    console.log("no custom workout found, default set");
     localStorage.setItem("myWorkout", JSON.stringify(customworkoutdata));
   }
 
@@ -30,7 +31,7 @@ const Table: React.FC = () => {
   const getUserData = () => {
     if (loggedIn) {
       axios
-        .get("http://127.0.0.1:8000/user/", {
+        .get(`${apiIp}/user/`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("accessToken"),
           },
@@ -38,20 +39,17 @@ const Table: React.FC = () => {
         .then((response) => {
           localStorage.setItem(`myWorkout`, JSON.parse(response.data.workout));
           setWorkout(JSON.parse(localStorage.getItem("myWorkout")!));
-          console.log("Workout loaded from server");
         })
         .catch((error) => {
           console.log(error.response.data);
         });
-    } else {
-      console.log("Attempt to grab saved workout when not logged in");
     }
   };
   const saveUserData = () => {
     if (loggedIn) {
       axios
         .post(
-          "http://127.0.0.1:8000/updateWorkout/",
+          `${apiIp}/updateWorkout/`,
           { workout: JSON.stringify(localStorage.getItem("myWorkout")!) },
           {
             headers: {
@@ -65,8 +63,6 @@ const Table: React.FC = () => {
         .catch((error) => {
           console.log(error.response.data);
         });
-    } else {
-      console.log("Attempt to save workout when not logged in");
     }
   };
   const dialogRef = useRef<HTMLDialogElement | null>(null);
