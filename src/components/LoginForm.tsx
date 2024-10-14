@@ -3,8 +3,10 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import React, { useState } from "react";
 import axios from "axios";
+import config from "../../config";
 
 const LoginForm: React.FC = () => {
+  const apiIp: string = config.apiIp;
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
@@ -12,7 +14,7 @@ const LoginForm: React.FC = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:8000/api/token/", {
+      .post(`${apiIp}/api/token/`, {
         username,
         password,
       })
@@ -22,7 +24,7 @@ const LoginForm: React.FC = () => {
         localStorage.setItem("refreshToken", response.data.refresh);
         localStorage.setItem("loggedIn", "true");
         axios
-          .get("http://127.0.0.1:8000/user/", {
+          .get(`${apiIp}/user/`, {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("accessToken"),
             },
@@ -30,11 +32,11 @@ const LoginForm: React.FC = () => {
           .then((response) => {
             localStorage.setItem(
               `myWorkout`,
-              JSON.parse(response.data.workout)
+              JSON.stringify(response.data.workout)
             );
             localStorage.setItem(
               `calendar`,
-              JSON.parse(response.data.calendar)
+              JSON.stringify(response.data.calendar)
             );
           })
           .catch((error) => {
