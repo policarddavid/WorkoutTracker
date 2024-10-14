@@ -31,7 +31,7 @@ function MyCalendar() {
     setLoggedIn(localStorage.getItem("loggedIn"));
   }, []);
   useEffect(() => {
-    if (loggedIn && localStorage.getItem("calendar") != "") {
+    if (loggedIn && localStorage.getItem("calendar")) {
       setDates(JSON.parse(localStorage.getItem("calendar")!));
     }
   }, []);
