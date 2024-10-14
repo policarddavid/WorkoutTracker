@@ -7,6 +7,7 @@ import config from "../../config";
 
 const LoginForm: React.FC = () => {
   const apiIp: string = config.apiIp;
+  console.log(`${apiIp}/api/token/`);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errors, setErrors] = useState<string[]>([]);
