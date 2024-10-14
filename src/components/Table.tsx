@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { EditOutlined, StopOutlined, PlusOutlined } from "@ant-design/icons";
 import { Workout } from "./Workout";
 import "./Table.css";
 import Button from "./Button";
-import { useRef, useState } from "react";
 import customworkoutdata from "../assets/customworkout.json";
+import axios from "axios";
+import { Modal, Button as ModalButton } from "react-bootstrap";
 
 const Table: React.FC = () => {
+  const [show, setShow] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("loggedIn"));
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("loggedIn"));
+  });
+
   if (!localStorage.getItem("myWorkout")) {
+    console.log("no custom workout found, default set");
     localStorage.setItem("myWorkout", JSON.stringify(customworkoutdata));
   }
 
@@ -17,6 +27,48 @@ const Table: React.FC = () => {
   const [updatedWorkout, setUpdatedWorkout] = useState<Workout>(
     JSON.parse(localStorage.getItem("myWorkout")!)
   );
+  const getUserData = () => {
+    if (loggedIn) {
+      axios
+        .get("http://127.0.0.1:8000/user/", {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken"),
+          },
+        })
+        .then((response) => {
+          localStorage.setItem(`myWorkout`, JSON.parse(response.data.workout));
+          setWorkout(JSON.parse(localStorage.getItem("myWorkout")!));
+          console.log("Workout loaded from server");
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    } else {
+      console.log("Attempt to grab saved workout when not logged in");
+    }
+  };
+  const saveUserData = () => {
+    if (loggedIn) {
+      axios
+        .post(
+          "http://127.0.0.1:8000/updateWorkout/",
+          { workout: JSON.stringify(localStorage.getItem("myWorkout")!) },
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("accessToken"),
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    } else {
+      console.log("Attempt to save workout when not logged in");
+    }
+  };
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [daySelected, setDay] = useState<number | 0>(0);
   const handleEdit = (key: number) => {
@@ -30,8 +82,6 @@ const Table: React.FC = () => {
   };
   const handleRemove = (key: number) => {
     let removedExercise = updatedWorkout;
-    console.log("removing exercise");
-    console.log(removedExercise.days[daySelected].exercises[key]);
     removedExercise.days[daySelected].exercises.splice(key, 1);
     setUpdatedWorkout(removedExercise);
     setWorkout(JSON.parse(localStorage.getItem("myWorkout")!));
@@ -61,16 +111,47 @@ const Table: React.FC = () => {
     dialogRef.current?.close();
     localStorage.setItem(`myWorkout`, JSON.stringify(updatedWorkout));
     setWorkout(JSON.parse(localStorage.getItem("myWorkout")!));
-    console.log("changes saved");
     (document.getElementById("editor") as HTMLFormElement)?.reset();
   };
   return (
     <div className="myTable">
+      <Modal
+        show={show}
+        onHide={handleClose}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Login Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>You need to log in to perform this action!</Modal.Body>
+        <Modal.Footer>
+          <Button color="small" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <table className="table table-striped-columns">
         <thead>
-          <tr>
-            <th className="workoutName" colSpan={workout.days.length}>
-              {workout.name}
+          <tr className="titleRow">
+            <th colSpan={workout.days.length}>
+              <div className="workoutName">
+                <Button
+                  onClick={!loggedIn ? () => handleShow() : () => getUserData()}
+                  color="week"
+                >
+                  Load your workout
+                </Button>
+                <div>{workout.name}</div>
+                <Button
+                  onClick={
+                    !loggedIn ? () => handleShow() : () => saveUserData()
+                  }
+                  color="week"
+                >
+                  Save current workout
+                </Button>
+              </div>
             </th>
           </tr>
           <tr>

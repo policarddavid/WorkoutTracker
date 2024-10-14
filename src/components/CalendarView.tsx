@@ -1,5 +1,5 @@
 import MyCalendar from "./MyCalendar";
-import Nav from "./Nav";
+import NavBar from "./NavBar";
 import "./CalendarView.css";
 import "./Nav.css";
 
@@ -9,7 +9,7 @@ const CalendarView: React.FC = () => {
       <div className="calendar">
         <MyCalendar />
       </div>
-      <Nav />
+      <NavBar />
     </div>
   );
 };
