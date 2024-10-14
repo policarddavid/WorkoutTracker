@@ -29,6 +29,21 @@ function MyCalendar() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("loggedIn"));
   useEffect(() => {
     setLoggedIn(localStorage.getItem("loggedIn"));
+    if (loggedIn) {
+      axios
+        .get(`${apiIp}/user/`, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken"),
+          },
+        })
+        .then((response) => {
+          localStorage.setItem(`calendar`, JSON.parse(response.data.calendar));
+          setDates(JSON.parse(localStorage.getItem("calendar")!));
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    }
   }, []);
   useEffect(() => {
     if (loggedIn && localStorage.getItem("calendar")) {
